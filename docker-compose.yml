@@ -1,0 +1,14 @@
+services:
+  account-service:
+    build:
+      context: ./account-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    networks:
+      - spring-microservice
+
+networks:
+  spring-microservice:
+    driver: bridge
