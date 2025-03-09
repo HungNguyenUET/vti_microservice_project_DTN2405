@@ -1,4 +1,4 @@
-package vti.account_service.entity;
+package vti.department_service.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
