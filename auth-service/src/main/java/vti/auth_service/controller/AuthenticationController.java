@@ -6,8 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import vti.auth_service.dto.request.LoginRequestDTO;
 import vti.auth_service.dto.request.RegisterRequestDTO;
+import vti.auth_service.dto.response.AuthenticationResponseDTO;
 import vti.auth_service.dto.response.RegisterResponseDTO;
+import vti.auth_service.exception.CustomException;
 import vti.auth_service.services.AuthenticationService;
 
 @Slf4j
@@ -26,11 +29,16 @@ public class AuthenticationController {
         return ResponseEntity.status(registerResponseDTO.getStatus()).body(registerResponseDTO);
     }
 
-    public ResponseEntity<?> login() {
-        return null;
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponseDTO> login(@RequestBody @Valid LoginRequestDTO loginRequestDTO) {
+        AuthenticationResponseDTO responseDTO = authenticationService.login(loginRequestDTO);
+        return ResponseEntity
+                .status(responseDTO.getStatus())
+                .body(responseDTO);
     }
 
-    public Object refreshToken() {
-        return null;
+    @PostMapping("/refresh-token")
+    public Object refreshToken(@RequestHeader("Authorization") String authHeader) throws CustomException {
+        return authenticationService.refreshToken(authHeader);
     }
 }

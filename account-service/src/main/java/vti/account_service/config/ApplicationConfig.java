@@ -1,4 +1,4 @@
-package vti.auth_service.config;
+package vti.account_service.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import vti.auth_service.user.repo.UserRepository;
+import vti.account_service.user.repo.UserRepository;
 
 @Slf4j
 @Configuration

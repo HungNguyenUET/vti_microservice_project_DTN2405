@@ -1,4 +1,4 @@
-package vti.auth_service.model;
+package vti.account_service.user.model;
 
 import jakarta.persistence.*;
 import lombok.*;
