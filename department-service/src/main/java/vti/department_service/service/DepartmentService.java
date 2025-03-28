@@ -6,6 +6,7 @@ import vti.department_service.entity.Department;
 import vti.department_service.repository.IDepartmentRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentService implements IDepartmentService {
@@ -15,5 +16,16 @@ public class DepartmentService implements IDepartmentService {
     @Override
     public List<Department> getAllDepartments() {
         return repository.findAll();
+    }
+
+    @Override
+    public String getDepartmentName(Integer id) {
+        Optional<Department> departmentOpt = repository.findById(id);
+        if (departmentOpt.isEmpty()) {
+            return null;
+        }
+
+        Department department = departmentOpt.get();
+        return department.getName();
     }
 }
